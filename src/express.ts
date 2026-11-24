@@ -72,6 +72,10 @@ app.get("/haven/:city", (req, res) => {
   res.redirect(302, "https://haven.hackclub.com/" + req.params.city);
 });
 
+app.get("/cocoa/:city", (req, res) => {
+  res.redirect(302, "https://cocoa.hackclub.com/" + req.params.city);
+});
+
 app.get(/^\/pkg!(.+)$/, (req, res) => {
   res.redirect(302, "https://mail.hackclub.com/pkg!" + req.params[0]);
 });
@@ -150,6 +154,10 @@ app.get(["/*path", "/"], (req: Request, res: Response) => {
         }
         if (slug.startsWith("hv-")) {
           res.redirect(302, "https://haven.hackclub.com/" + slug.substring(3));
+          return;
+        }
+        if (slug.startsWith("co-")) {
+          res.redirect(302, "https://cocoa.hackclub.com/" + slug.substring(3));
           return;
         }
 
